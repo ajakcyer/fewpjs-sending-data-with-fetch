@@ -18,30 +18,26 @@ const submitData = ((userName, userEmail) =>{
     }
     // debugger
 
-    fetch("http://localhost:3000/users", objectConfig)
+    return fetch('http://localhost:3000/users', objectConfig)
     .then(response => response.json())
     .then(object =>{
         addToDom(object)
     })
     .catch(error =>{
-        alert("Something Went Wrong!")
-        console.log(error.message)
-        const p = document.createElement('p')
-        p.innerText = error.message
-        body.append(p)
+        alert("Unauthorized Access")
+        // console.log(error.message)
+        // const p = document.createElement('p')
+        // p.innerText = error.message
+        // body.append(p)
+        document.body.innerHTML = error.message
     })
 
-    return fetch()
 
 
 })
 
 const addToDom = (object) => {
-
-    const h1 = document.createElement('h1')
-    h1.innerText = object.id
-    body.append(h1)
-    
+    document.body.innerHTML = object.id
 }
 
 submitData("Kanye", "yeezy@gmail.com")
